@@ -36,4 +36,4 @@ engine = create_engine(DATABASE_URL)
 def read_cities():
     with engine.connect() as conn:
         result = conn.execute(text("SELECT * FROM cities"))
-        return [dict(row) for row in result]
+        return [dict(row._mapping) for row in result]
