@@ -3,7 +3,7 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
-@router.get("/cities")
+@router.get("/")
 def read_cities():
     conn = psycopg2.connect("dbname=weatherdb user=postgres password=postgres host=db")
     cur = conn.cursor()

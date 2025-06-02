@@ -7,7 +7,7 @@ DATABASE_URL = "postgresql://postgres:postgres@db:5432/weatherdb"
 def get_most_recent_7_days():
     today = datetime.today()
     end_date = (today - timedelta(days=7)).strftime('%Y-%m-%d')
-    start_date = (today - timedelta(days=14)).strftime('%Y-%m-%d')
+    start_date = (today - timedelta(days=13)).strftime('%Y-%m-%d')
     return start_date, end_date
 
 async def fetch_and_store_weather():
