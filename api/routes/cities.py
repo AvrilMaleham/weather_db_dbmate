@@ -1,14 +1,16 @@
+import psycopg2
 from fastapi import APIRouter
-from sqlalchemy import create_engine, text
 
 router = APIRouter()
 
-DATABASE_URL = "postgresql://postgres:postgres@db:5432/weatherdb"
-
-engine = create_engine(DATABASE_URL)
-
-@router.get("/")
+@router.get("/cities")
 def read_cities():
-    with engine.connect() as conn:
-        result = conn.execute(text("SELECT * FROM cities"))
-        return [dict(row._mapping) for row in result]
+    conn = psycopg2.connect("dbname=weatherdb user=postgres password=postgres host=db")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM cities")
+    rows = cur.fetchall()
+    columns = [desc[0] for desc in cur.description]
+    results = [dict(zip(columns, row)) for row in rows]
+    cur.close()
+    conn.close()
+    return results
