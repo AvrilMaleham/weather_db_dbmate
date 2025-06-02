@@ -24,9 +24,9 @@ Create a new migration file.
 
 # Key project skills:
 
-- dbmate
+- Dbmate
 - Docker
 - FastAPI
 - DB Design
-- Seeding & Populating a Database
+- Migration Scripts
 - API Integration
