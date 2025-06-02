@@ -9,10 +9,8 @@ CREATE TABLE IF NOT EXISTS cities (
     UNIQUE(name, country)
 );
 
--- Create index for geographic queries
 CREATE INDEX IF NOT EXISTS idx_cities_coordinates ON cities(latitude, longitude);
 
--- Insert seed data only if table is empty
 INSERT INTO cities (name, country, latitude, longitude) 
 SELECT * FROM (VALUES
     ('Auckland', 'New Zealand', -36.848500, 174.763300),

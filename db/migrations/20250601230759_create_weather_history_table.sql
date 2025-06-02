@@ -11,10 +11,8 @@ CREATE TABLE IF NOT EXISTS weather_history (
     totalprecip_in DECIMAL(7,2)
 );
 
--- Create index on city_id for better query performance
 CREATE INDEX IF NOT EXISTS idx_weather_history_city_id ON weather_history(city_id);
 
--- Create index on date for better query performance
 CREATE INDEX IF NOT EXISTS idx_weather_history_date ON weather_history(date);
 
 -- migrate:down
