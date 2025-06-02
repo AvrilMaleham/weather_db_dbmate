@@ -1,15 +1,11 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-# from weather_fetcher import fetch_and_store_weather
+from weather_fetcher import fetch_and_store_weather
 from routes import weather, cities
 
 @asynccontextmanager
-# async def lifespan(_app: FastAPI):
-#     Base.metadata.create_all(bind=engine)
-#     await fetch_and_store_weather()
-#     yield
 async def lifespan(_app: FastAPI):
-    print("lifespan")
+    await fetch_and_store_weather()
     yield
 
 app = FastAPI(lifespan=lifespan)
